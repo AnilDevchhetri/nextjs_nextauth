@@ -19,11 +19,11 @@ const userSchema = new Schema<IUser>(
 
 //this is for hash passowrd when saving
 //thei is hook
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 10);
   }
-  // next();
+  //next();
 });
 
 const User = models?.User || model<IUser>("User", userSchema);
