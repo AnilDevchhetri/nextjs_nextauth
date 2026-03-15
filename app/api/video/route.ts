@@ -10,5 +10,11 @@ export async function GET() {
       return NextResponse.json([], { status: 200 });
     }
     return NextResponse.json(videos);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { error: "Failded to fetch videos" },
+      { status: 500 },
+    );
+  }
 }
